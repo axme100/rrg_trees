@@ -1,0 +1,40 @@
+\documentclass[11pt, spanish]{report}
+\usepackage[spanish]{babel}
+%Normally I would have used inputenc as overleaf reccomends, but for some reason when using the packages rrg-trees and their dependencies, I coulnd't get the Spanish accent marks to show up
+\usepackage[T1]{fontenc}
+\selectlanguage{spanish}
+\usepackage{rrgtrees}
+% It's not as clear from the documentation as you might expect but the following dependencies are required for the rrgtrees package:
+\usepackage{pst-node}
+\usepackage{pst-tree}
+
+
+% Because you can't type in spanish accent characters directly into the various control sequences of rrgtrees, the following symbols appear to be the ones required.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%https://tex.stackexchange.com/questions/8857/how-to-type-special-accented-letters-in-latex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+% Mi abuela conoció a Juan Pérez en su juventud
+\psset{treesep=2ex}
+  \SENTENCE{
+    \CLAUSE{
+      \CORE[COREa]{
+        \skiplevels{2}
+        \OPR{2}{Mi}
+        \ARG{\WORD(NP){{abuela}}}
+        \NUC{conoció}
+        \OPR{2}{a}
+        \ARG[ACD]{\WORD(NP){Juan Pérez}}
+        \endskiplevels
+      }
+    }
+  }
+\rPERIPH[a]{3}{PP}{
+	\CORE{
+    \NUC{en}
+    \ARG{\WORD(NP){su juventud}}
+	}
+}
+\dolinks
+\end{document}
