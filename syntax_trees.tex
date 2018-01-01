@@ -4,18 +4,13 @@
 \usepackage[T1]{fontenc}
 \selectlanguage{spanish}
 \usepackage{rrgtrees}
-% It's not as clear from the documentation as you might expect but the following dependencies are required for the rrgtrees package:
+% These packages are required
 \usepackage{pst-node}
 \usepackage{pst-tree}
-
-
-% Because you can't type in spanish accent characters directly into the various control sequences of rrgtrees, the following symbols appear to be the ones required.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%https://tex.stackexchange.com/questions/8857/how-to-type-special-accented-letters-in-latex
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{verbatim}
 
 \begin{document}
-% Mi abuela conoció a Juan Pérez en su juventud
+\section*{a.) Mi abuela conoció a Juan Pérez en su juventud}
 \psset{treesep=2ex}
   \SENTENCE{
     \CLAUSE{
@@ -32,9 +27,458 @@
   }
 \rPERIPH[a]{3}{PP}{
 	\CORE{
-    \NUC{en}
+    \NUC[P]{en}
     \ARG{\WORD(NP){su juventud}}
 	}
 }
 \dolinks
+\\
+\\
+\\
+\\
+\\
+\begin{comment}
+%El médico ya vio varios pacientes 
+\psset{treesep=2ex}
+  \SENTENCE{
+    \CLAUSE{
+      \CORE[COREb]{
+        \OPR{2}{El}
+        \ARG{\WORD(NP){{médico}}}
+        	\rPERIPH[b]{1}{FA}{\WORD{ya}}
+        \NUC{vio}
+        \ARG[ACD]{\WORD(NP){varios pacientes}}
+      }
+    }
+  }
+\dolinks
+\\
+\\
+\\
+\\
+\\
+\end{comment}
+%El médico ya vio varios pacientes (new)
+\psset{treesep=2ex}
+\SENTENCE{%
+  \CLAUSE{%
+    \CORE[COREb]{%
+      \OPR{2}{El}%
+      \ARG{\WORD(NP){médico}}%
+      \rPERIPH[b]{1}{\rnode{FA}{FA}}{\WORD{ya}}%
+      \NUC{vio}%
+      \ARG[ACD]{\WORD(NP){varias pacientes}}%
+    }%
+  }%
+}
+\pnode[-4,0](COREb){P0}
+\rput(P0){\textsc{Periphery}}
+\ncline[nodesepA=1]{->}{P0}{COREb}
+\ncangles[armA=0.5,angleA=-90,angleB=90]{P0}{FA}
+\\
+\\
+\\
+\\
+\\
+%Los bomberos salieron de la estación
+\psset{treesep=2ex}
+  \SENTENCE{
+    \CLAUSE{
+      \CORE[COREa]{
+        \skiplevels{2}
+        \OPR{2}{Los}
+        \ARG{\WORD(NP){{bomberos}}}
+        \NUC{salieron}
+        \ARG{\FanEnd{PP}{de la estación}}
+        \endskiplevels
+      }
+    }
+  }
+\dolinks
+\\
+\\
+\\
+\\
+\\
+% No sacrificaré mi vida por Juan
+\psset{treesep=2ex}
+  \SENTENCE{
+    \CLAUSE{
+      \CORE[COREa]{
+        \skiplevels{2}
+        \ARG{\WORD(NP){{[yo]}}}
+        \OPR{2}{no}
+        \NUC{sacrificaré}
+        \ARG[ACD]{\WORD(NP){mi vida}}
+        \endskiplevels
+      }
+    }
+  }
+\rPERIPH[a]{3}{PP}{
+	\CORE{
+    \NUC[P]{por}
+    \ARG{\WORD(NP){Juan}}
+	}
+}
+\dolinks
+\\
+\\
+\\
+\\
+\\
+% A las niñas nos escondían adentro de la casa
+\psset{treesep=2ex}
+  \SENTENCE{
+    \CLAUSE{
+      \CORE[COREa]{
+      	\ARG{\WORD(NP){{*A las niñas}}}
+        \ARG{\WORD(NP){{*nos}}}
+        \NUC{escondían}
+        \ARG[ACD]{\WORD(PP){adentro de la casa}}
+      }
+    }
+  }
+\dolinks
+%Los argumentos marcados con * tienen que representar el mismo referente. Esta oración muestra algún fenómeno que se podría llamar duplicación del sujeto.
+
+
+% Escoge al gatito que más te guste
+\psset{treesep=2ex}
+  \SENTENCE{
+    \CLAUSE{
+      \CORE[COREa]{
+        \ARG{\WORD(NP){{[el que escoge]}}}
+        \NUC{escoge}
+        \ARG{\FanEnd{NP}{al gatito que más te guste}}
+      }
+    }
+  }
+\dolinks
+\\
+\\
+\\
+\\
+\\
+% Juan se olvidó del libro en la mesa
+\psset{treesep=2ex}
+  \SENTENCE{
+    \CLAUSE{
+      \CORE[COREa]{
+        \ARG{\WORD(NP){{Juan}}}
+        \NUC{se olvidó}
+        \ARG{\FanEnd{NP}{del libro en la mesa}}
+      }
+    }
+  }
+\dolinks
+\\
+\\
+\\
+\\
+\\
+%Con estos lentes puedo ver los bichitos en las plantas
+% No sacrificaré mi vida por Juan
+\psset{treesep=2ex}
+\lPERIPH[a]{3}{PP}{
+	\CORE{
+    \NUC[P]{Con}
+    \ARG{\WORD(NP){estos lentes}}
+	}
+}
+  \SENTENCE{
+    \CLAUSE{
+      \CORE[COREa]{
+        \skiplevels{2}
+        \ARG{\WORD(NP){{[yo]}}}
+        \OPR{2}{puedo}
+        \NUC{ver}
+        \ARG{\FanEnd{NP}{los bichitos en las plantas}}
+        \endskiplevels
+      }
+    }
+  }
+\dolinks
+\\
+\\
+\\
+\\
+\\
+% El año pasado, los biólogos identificaron algunas de las especies
+\psset{treesep=2ex}
+\lPERIPH[a]{3}{NP}{
+	\CORE{
+    \NUC[N]{el año pasado}
+	}
+}
+  \SENTENCE{
+    \CLAUSE{
+      \CORE[COREa]{
+        \skiplevels{2}
+        \ARG{\WORD(NP){{los biólogos}}}
+        \NUC{identificaron}
+        \ARG{\FanEnd{NP}{algunas de las especies}}
+        \endskiplevels
+      }
+    }
+  }
+\dolinks
+\\
+\\
+\\
+\\
+\\
+% Saluda a la doctora a la entrada
+\psset{treesep=2ex}
+  \SENTENCE{
+    \CLAUSE{
+      \CORE[COREa]{
+        \skiplevels{2}
+        \ARG{\WORD(NP){{[El que saluda]}}}
+        \NUC{saluda}
+        \OPR{2}{a}
+        \ARG{\WORD(NP){{la doctora}}}
+        \endskiplevels
+      }
+    }
+  }
+\rPERIPH[a]{3}{PP}{
+	\CORE{
+    \NUC[P]{a}
+    \ARG{\WORD(NP){{la entrada}}}
+	}
+}  
+\dolinks
+\\
+\\
+\\
+\\
+\\
+% Nadie confía en ti desde el accidente
+\psset{treesep=2ex}
+  \SENTENCE{
+    \CLAUSE{
+      \CORE[COREa]{
+        \skiplevels{2}
+        \ARG{\WORD(NP){{Nadie}}}
+        \NUC{confia}
+        \ARG{\FanEnd{PP}{en ti   }}
+        \endskiplevels
+      }
+    }
+  }
+\rPERIPH[a]{3}{PP}{
+	\CORE{
+    \NUC[P]{desde}
+    \ARG{\WORD(NP){{el accidente}}}
+	}
+}  
+\dolinks
+\\
+\\
+\\
+\\
+\\
+% Le acaricié la cabeza a Juan
+\psset{treesep=2ex}
+  \SENTENCE{
+    \CLAUSE{
+      \CORE[COREa]{
+        \skiplevels{2}
+        \ARG{\WORD(NP){{[yo]}}}
+        \ARG{\WORD(NP){{*le}}}
+        \NUC{acaricié}
+        \ARG{\FanEnd{NP}{la cabeza}}
+        \ARG{\WORD(NP){{*a Juan}}}
+        \endskiplevels
+      }
+    }
+  }
+\dolinks
+\\
+\\
+\\
+\\
+\\
+% Tú tienes miedo de la obscuridad
+\psset{treesep=2ex}
+  \SENTENCE{
+    \CLAUSE{
+      \CORE[COREa]{
+      	\skiplevels{2}
+        \ARG{\WORD(NP){{Tú}}}
+        \NUC[semi-copulativo]{tienes miedo}
+        \endskiplevels
+      }
+    }
+  }
+\rPERIPH[a]{3}{PP}{
+	\CORE{
+    \NUC[P]{de}
+    \ARG{\WORD(NP){la oscuridad}}
+	}
+}
+\dolinks
+\\
+\\
+\\
+\\
+\\
+% En las mañanas saluda la doctora
+% El año pasado, los biólogos identificaron algunas de las especies
+\psset{treesep=2ex}
+\lPERIPH[a]{3}{PP}{
+	\CORE{
+    \NUC[P]{En}
+    \ARG{\FanEnd{NP}{las mañanas}}
+	}
+}
+  \SENTENCE{
+    \CLAUSE{
+      \CORE[COREa]{
+        \skiplevels{2}
+        \NUC{ saluda}
+        \ARG{\FanEnd{NP}{la doctora}}
+        \endskiplevels
+      }
+    }
+  }
+\dolinks
+\\
+\\
+\\
+\\
+\\
+% Terminé con mi novio
+\psset{treesep=2ex}
+  \SENTENCE{
+    \CLAUSE{
+      \CORE[COREa]{
+        \ARG{\WORD(NP){{[Yo]}}}
+        \NUC{terminé}
+  		\ARG{\FanEnd{PP}{con mi novio}}
+      }
+    }
+  }
+\dolinks
+\\
+\\
+\\
+\\
+\\
+% Me saqué el sueter con dificultad 
+\psset{treesep=2ex}
+  \SENTENCE{
+    \CLAUSE{
+      \CORE[COREa]{
+      	\skiplevels{2}
+        \ARG{\WORD(NP){{[Yo]}}}
+        \NUC{me saqué}
+        \ARG{\FanEnd{NP}{el sueter}}
+        \endskiplevels
+      }
+    }
+  }
+\rPERIPH[a]{3}{PP}{
+	\CORE{
+    \NUC[P]{con}
+    \ARG{\WORD(NP){dificultad}}
+	}
+}
+\dolinks
+\\
+\\
+\\
+\\
+\\
+% Le estoy tejiendo una bufanda
+\psset{treesep=2ex}
+  \SENTENCE{
+    \CLAUSE{
+      \CORE[COREa]{
+      	\skiplevels{2}
+        \ARG{\WORD(NP){{[Yo]}}}
+        \ARG{\WORD(NP){{le}}}
+        \NUC{estoy tejiendo}
+        \ARG{\FanEnd{NP}{una bufanda}}
+        \endskiplevels
+      }
+    }
+  }
+\dolinks
+\\
+\\
+\\
+\\
+\\
+% Silvia te mandó un abrazo conmigo
+\psset{treesep=2ex}
+  \SENTENCE{
+    \CLAUSE{
+      \CORE[COREa]{
+      	\skiplevels{2}
+        \ARG{\WORD(NP){{Silvia}}}
+        \ARG{\WORD(NP){{te}}}
+        \NUC{mandó}
+        \ARG{\FanEnd{NP}{un abrazo}}
+        \endskiplevels
+      }
+    }
+  }
+\rPERIPH[a]{3}{NP}{
+	\CORE{
+    \NUC[P]{conmigo}
+	}
+}
+\dolinks
+\\
+\\
+\\
+\\
+\\
+% María vino de su casa al trabajo
+\psset{treesep=2ex}
+  \SENTENCE{
+    \CLAUSE{
+      \CORE[COREa]{
+      	\skiplevels{2}
+        \ARG{\WORD(NP){{María}}}
+        \NUC{vino}
+        \endskiplevels
+      }
+    }
+  }
+\rPERIPH[a]{3}{PP}{
+	\CORE{
+    \NUC[P]{de su casa}
+	}
+}
+\rPERIPH[a]{3}{PP}{
+	\CORE{
+    \NUC[P]{al trabajo}
+	}
+}
+\dolinks
+\\
+\\
+\\
+\\
+\\
+% Sofía depende de las semillas de chia para vivir
+\psset{treesep=2ex}
+  \SENTENCE{
+    \CLAUSE{
+      \CORE[COREa]{
+      	\skiplevels{2}
+        \ARG{\WORD(NP){{Sofía}}}
+        \NUC{depende}
+        \ARG{\FanEnd{PP}{de las semillas de chia}}
+        \endskiplevels
+      }
+    }
+  }
+\rPERIPH[a]{3}{PP}{
+	\CORE{
+    \NUC[P]{para vivir}
+	}
+}
 \end{document}
