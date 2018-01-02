@@ -90,7 +90,7 @@
       \CORE[COREa]{
         \skiplevels{2}
         \ARG{\WORD(NP){{[yo]}}}
-        \OPR{2}{no}
+        \rPERIPH[b]{1}{\rnode{FA}{FA}}{\WORD{no}}%
         \NUC{sacrificaré}
         \ARG[ACD]{\WORD(NP){mi vida}}
         \endskiplevels
@@ -103,6 +103,10 @@
     \ARG{\WORD(NP){Juan}}
 	}
 }
+\pnode[-4,0](COREa){P0}
+\rput(P0){\textsc{Periphery}}
+\ncline[nodesepA=1]{->}{P0}{COREa}
+\ncangles[armA=0.5,angleA=-90,angleB=90]{P0}{FA}
 \dolinks
 \\
 \\
@@ -118,7 +122,7 @@
       	\ARG{\WORD(NP){{*A las niñas}}}
         \ARG{\WORD(NP){{*nos}}}
         \NUC{escondían}
-        \ARG[ACD]{\WORD(PP){adentro de la casa}}
+        \ARG{\FanEnd{PP}{adentro de la casa}}
       }
     }
   }
@@ -323,7 +327,7 @@
 \lPERIPH[a]{3}{PP}{
 	\CORE{
     \NUC[P]{En}
-    \ARG{\FanEnd{NP}{las mañanas}}
+    \ARG{\FanEnd{NP}{las mañanas  }}
 	}
 }
   \SENTENCE{
@@ -361,7 +365,7 @@
 \\
 \\
 \newpage
-\section*{Me saqué el sueter con dificultad}
+\section*{Me saqué el suéter con dificultad}
 \psset{treesep=2ex}
   \SENTENCE{
     \CLAUSE{
@@ -369,7 +373,7 @@
       	\skiplevels{2}
         \ARG{\WORD(NP){{[Yo]}}}
         \NUC{me saqué}
-        \ARG{\FanEnd{NP}{el sueter}}
+        \ARG{\FanEnd{NP}{el suéter}}
         \endskiplevels
       }
     }
@@ -448,7 +452,12 @@
   }
 \rPERIPH[a]{3}{PP}{
 	\CORE{
-    \NUC[P]{de su casa}
+    \NUC[P]{de}
+    \ARG{\WORD(NP){su casa}}
+	}
+    \CORE{
+    \NUC[P]{al}
+    \ARG{\WORD(NP){trabajo}}
 	}
 }
 \dolinks
